@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>
+            home
+        </title>
+    </head>
+    <style>
+        .striked{
+            text-decoration: line-through;
+        }
+    </style>
+    <body>
+        <form action='/' method="POST">
+            <input  type="text" name="title">
+            <input type="submit" value="add"> 
+        </form>
+        <ul>
+            {{#each bands}}
+            <li {{#if striked}} class="striked" {{/if}}>
+               
+            <form action="/update/{{id}}" method="POST">
+            <input type="hidden" name="title" value='{{title}}'>
+            <input type="hidden" name="striked" value="{{striked}}">
+                   {{title}}         
+            <button>
+                {{#if striked}}
+                unmark
+                {{else}}
+                mark
+                {{/if}}
+            </button>
+            </form>
+    {{/each}}
+        </ul>
+        <form action="/delete" method="POST">
+        <button>bin</button>
+        </form>
+    </body>
+</html>
